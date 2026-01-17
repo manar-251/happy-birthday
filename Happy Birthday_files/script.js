@@ -24,8 +24,25 @@ var typed = new Typed("#typed", {
     stringsElement: '#typed-strings',
     typeSpeed: 30,
     backSpeed: 10,
-    loop: true
+    loop: false,
+     onComplete: function () {
+        setTimeout(showFinalMessage, 1000);
+    }
 });
+
+function showFinalMessage() {
+    document.querySelector('.type-wrap').style.display = 'none';
+
+    var finalMsg = document.getElementById('final-message');
+    finalMsg.style.display = 'block';
+    finalMsg.style.opacity = 0;
+    finalMsg.style.transition = 'opacity 1.5s';
+
+    setTimeout(function () {
+        finalMsg.style.opacity = 1;
+    }, 100);
+}
+
 var retina = window.devicePixelRatio,
 
     // Math shorthands
